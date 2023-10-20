@@ -13,6 +13,7 @@ const authApi = api.injectEndpoints({
         method: 'POST',
         body: { user },
       }),
+      transformResponse: (response) => response.data,
     }),
     login: builder.mutation({
       query: (user) => ({
@@ -20,6 +21,7 @@ const authApi = api.injectEndpoints({
         method: 'POST',
         body: { user },
       }),
+      transformResponse: (response) => response.data,
     }),
   }),
 });
@@ -57,5 +59,7 @@ const authSlice = createSlice({
 });
 
 export const { logout } = authSlice.actions;
+
+export const selectToken = (state) => state.auth.token;
 
 export default authSlice.reducer;

@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { useLoginMutation, useRegisterMutation } from './authSlice';
+import { useNavigate } from 'react-router-dom';
 
 export default function AuthForm() {
+  const navigate = useNavigate();
+
   // Handles swapping between login and register
   const [isLogin, setIsLogin] = useState(true);
   const authAction = isLogin ? 'Login' : 'Register';
@@ -32,6 +35,7 @@ export default function AuthForm() {
     try {
       // We need to unwrap here if we want to catch the error
       await authMethod(credentials).unwrap();
+      navigate('/');
     } catch (err) {
       console.error(err);
       setError(err);
