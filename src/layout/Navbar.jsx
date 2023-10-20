@@ -15,10 +15,10 @@ export default function Navbar() {
 
   return (
     <nav>
-      <h1>{"Stranger's Things"}</h1>
+      <h1>RTK Query JWT Authentication Example</h1>
       <menu>
         <li>
-          <NavLink to="/posts">Posts</NavLink>
+          <NavLink to="/">Home</NavLink>
         </li>
         {token ? (
           <li>
