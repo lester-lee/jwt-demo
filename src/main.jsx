@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
 import './index.css';
 
-import store from '@/store/store.js';
+import store from './store/store.js';
 import { Provider } from 'react-redux';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Root from '@/layout/Root.jsx';
-import AuthForm from '@/features/auth/AuthForm.jsx';
+import Root from './layout/Root.jsx';
+import AuthForm from './features/auth/AuthForm.jsx';
 
 const router = createBrowserRouter([
   {
