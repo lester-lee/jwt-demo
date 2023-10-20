@@ -1,0 +1,13 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+
+  border-bottom: 1px solid #999;
+
+  menu {
+    display: flex;
+    list-style: none;
+    gap: 2ch;
+    align-items: center;
+  }
+}
