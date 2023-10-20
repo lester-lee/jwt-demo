@@ -10,6 +10,8 @@ import Root from './layout/Root.jsx';
 import AuthForm from './features/auth/AuthForm.jsx';
 import Lipsum from './features/lipsum/Lipsum';
 
+// React Router docs recommend creating the router outside of the React tree
+// https://reactrouter.com/en/main/routers/create-browser-router
 const router = createBrowserRouter([
   {
     path: '/',

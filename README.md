@@ -1,8 +1,10 @@
-# React + Vite
+# JWT Authentication with RTK Query
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Follow these steps to set up JWT authentication with RTK Query.
 
-Currently, two official plugins are available:
+1. Set up a Redux store with an empty central API slice definition. (`src/store`)
+2. Create a separate auth slice that uses RTK Query to handle register and login mutations. The slice stores the received JWT in state (and optionally, session storage). (`features/auth`)
+3. Create a component that allows users to register or login (`<AuthForm>`). This component uses the mutations defined earlier.
+4. Use the truthiness of `token` in state to conditionally render different views. `layout/Navbar` contains one such example.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This repo also contains an example of how to use React Router and `<Outlet>`.

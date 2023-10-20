@@ -2,6 +2,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { logout, selectToken } from '../features/auth/authSlice';
 
+/**
+ * A simple navigation bar that displays "Log In" if the user is not logged in,
+ * and "Log Out" if the user is logged in.
+ */
 export default function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -13,6 +17,7 @@ export default function Navbar() {
     navigate('/');
   };
 
+  //
   return (
     <nav>
       <h1>RTK Query JWT Authentication Example</h1>

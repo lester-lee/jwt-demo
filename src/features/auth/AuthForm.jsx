@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useLoginMutation, useRegisterMutation } from './authSlice';
 import { useNavigate } from 'react-router-dom';
 
+/** This form allows users to register or log in. */
 export default function AuthForm() {
   const navigate = useNavigate();
 
@@ -23,6 +24,7 @@ export default function AuthForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
+  /** Send the requested authentication action to the API */
   const attemptAuth = async (evt) => {
     evt.preventDefault();
 
