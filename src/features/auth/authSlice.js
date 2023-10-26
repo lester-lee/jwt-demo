@@ -14,6 +14,7 @@ const authApi = api.injectEndpoints({
         body: { user },
       }),
       transformResponse: (response) => response.data,
+      transformErrorResponse: (response) => response.data.error.message,
     }),
     login: builder.mutation({
       query: (user) => ({
@@ -22,6 +23,7 @@ const authApi = api.injectEndpoints({
         body: { user },
       }),
       transformResponse: (response) => response.data,
+      transformErrorResponse: (response) => response.data.error.message,
     }),
   }),
 });
@@ -50,6 +52,8 @@ const authSlice = createSlice({
       window.sessionStorage.removeItem(TOKEN_KEY);
     },
   },
+  // extraReducers allows us to attach callback functions to
+  // updates in _other_ slices of the store.
   // These `extraReducers` automatically update the token when
   // the RTK Query mutations are fulfilled.
   extraReducers: (builder) => {

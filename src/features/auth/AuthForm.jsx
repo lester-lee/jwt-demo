@@ -20,11 +20,10 @@ export default function AuthForm() {
   const [password, setPassword] = useState('');
 
   // Form submission
-  const [login] = useLoginMutation();
-  const [register] = useRegisterMutation();
-
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [login, { isLoading: loginLoading, error: loginError }] =
+    useLoginMutation();
+  const [register, { isLoading: registerLoading, error: registerError }] =
+    useRegisterMutation();
 
   /** Send the requested authentication action to the API */
   const attemptAuth = async (evt) => {
@@ -33,18 +32,14 @@ export default function AuthForm() {
     const authMethod = isLogin ? login : register;
     const credentials = { username, password };
 
-    setError(null);
-    setLoading(true);
-
+    // We don't want to navigate if there's an error.
+    // `unwrap` will throw an error if there is one
+    // so we can use a try/catch to handle it.
     try {
-      // We need to unwrap here if we want to catch the error
       await authMethod(credentials).unwrap();
       navigate('/');
     } catch (err) {
       console.error(err);
-      setError(err);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -73,8 +68,10 @@ export default function AuthForm() {
         <button>{authAction}</button>
       </form>
       <a onClick={() => setIsLogin(!isLogin)}>{altCopy}</a>
-      {loading && <p>Logging in...</p>}
-      {error && <p>{error.data.error.message}</p>}
+
+      {(loginLoading || registerLoading) && <p>Please wait...</p>}
+      {loginError && <p role="alert">{loginError}</p>}
+      {registerError && <p role="alert">{registerError}</p>}
     </>
   );
 }
