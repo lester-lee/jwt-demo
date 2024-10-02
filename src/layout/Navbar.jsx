@@ -28,7 +28,9 @@ export default function Navbar() {
         </li>
         {token ? (
           <li>
-            <a onClick={handleLogout}>Log Out</a>
+            <a href="#" onClick={handleLogout}>
+              Log Out
+            </a>
           </li>
         ) : (
           <li>
